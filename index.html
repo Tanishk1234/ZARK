@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Card Picker</title>
+    <style>
+        /* Basic Styling */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            margin: auto;
+        }
+
+        select, button {
+            padding: 10px;
+            margin: 10px;
+            width: 80%;
+            font-size: 16px;
+        }
+
+        #card {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
+            display: none;
+        }
+
+        #card h2 {
+            margin: 0;
+        }
+
+        /* Category Colors */
+        .trap { border-left: 5px solid red; }
+        .penalty { border-left: 5px solid orange; }
+        .mystery { border-left: 5px solid blue; }
+        .powerup { border-left: 5px solid green; }
+
+    </style>
+</head>
+<body>
+
+    <h1>🎲 Random Card Picker 🎲</h1>
+    <div class="container">
+        <label for="category">Choose a Category:</label>
+        <select id="category">
+            <option value="random">Random</option>
+            <option value="trap">Trap Cards</option>
+            <option value="penalty">Penalty Cards</option>
+            <option value="mystery">Mystery Cards</option>
+            <option value="powerup">Power-up Cards</option>
+        </select>
+
+        <button onclick="drawCard()">Draw Random Card</button>
+
+        <div id="card">
+            <h2 id="card-title"></h2>
+            <p id="card-description"></p>
+        </div>
+    </div>
+
+    <script>
+        // Card Data (Trap, Penalty, Mystery, Power-ups)
+        const cards = {
+            trap: [
+                { name: "Pitfall Trap", description: "Oops! You fell in a hole! Move back 5 spaces." },
+                { name: "Spike Trap", description: "Ouch! Stepped on spikes! Skip your next turn." },
+                { name: "Quicksand", description: "You're sinking! Roll only 1-3 for 2 turns." },
+                { name: "Teleport Trap", description: "A portal appears! You land on another trap." },
+                { name: "Sticky Web", description: "Caught in a spider web! Skip a turn unless you roll a 6." },
+                { name: "Hidden Mine", description: "BOOM! Lose a power-up card if you have one." }
+            ],
+            penalty: [
+                { name: "Slippery Floor", description: "Whoa! You slipped and moved back 3 spaces." },
+                { name: "Dizzy Spell", description: "You're so dizzy! Your next move is backward." },
+                { name: "Heavy Load", description: "Too heavy to move! Skip your next turn." },
+                { name: "Cursed Dice", description: "Your next roll is forced to be a 1." },
+                { name: "Weak Legs", description: "You can only move half of your next roll." },
+                { name: "Sudden Storm", description: "Strong winds stop you! Skip 1 turn." }
+            ],
+            mystery: [
+                { name: "Lucky Boost", description: "Hooray! Move forward 5 spaces." },
+                { name: "Teleport Portal", description: "A portal moves you to the nearest power-up tile!" },
+                { name: "Trickster's Gamble", description: "Roll a dice! 1-3 = Move back 6. 4-6 = Move forward 6." },
+                { name: "Secret Passage", description: "You find a shortcut! Move to the nearest safe tile." },
+                { name: "Reverse Fate", description: "Swap your last move (Forward -> Backward, or vice versa)." },
+                { name: "Shadow Swap", description: "Trade your last penalty with another random one!" }
+            ],
+            powerup: [
+                { name: "Double Roll", description: "Roll two dice next turn and add them together!" },
+                { name: "Trap Immunity", description: "The next trap you land on will not affect you." },
+                { name: "Speed Dash", description: "Move forward 7 spaces immediately!" },
+                { name: "Safe Teleport", description: "Move to any safe tile of your choice." },
+                { name: "Lucky Charm", description: "Instead of rolling, pick any number from 1 to 6!" },
+                { name: "Time Rewind", description: "Undo your last move and roll again!" }
+            ]
+        };
+
+        // Function to draw a random card based on category
+        function drawCard() {
+            let category = document.getElementById("category").value;
+            let selectedCategory;
+
+            // If "Random" is chosen, pick from all categories
+            if (category === "random") {
+                let categories = Object.keys(cards);
+                let randomCategory = categories[Math.floor(Math.random() * categories.length)];
+                selectedCategory = cards[randomCategory];
+                category = randomCategory; // Set category to the one picked
+            } else {
+                selectedCategory = cards[category];
+            }
+
+            // Pick a random card from the selected category
+            let randomCard = selectedCategory[Math.floor(Math.random() * selectedCategory.length)];
+
+            // Display the card
+            let cardDiv = document.getElementById("card");
+            cardDiv.className = category; // Apply category-based color
+            document.getElementById("card-title").innerText = randomCard.name;
+            document.getElementById("card-description").innerText = randomCard.description;
+            cardDiv.style.display = "block"; // Show card
+        }
+    </script>
+
+</body>
+</html>
