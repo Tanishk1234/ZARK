@@ -78,37 +78,19 @@
     <script>
         // Card Data (Trap, Penalty, Mystery, Power-ups)
         const cards = {
-            trap = [
-    { name: "Pitfall Trap", description: "Oops! You fell in a hole! Move back 5 spaces." },
-    { name: "Spike Trap", description: "Ouch! Stepped on spikes! Skip your next turn." },
-    { name: "Quicksand", description: "You're sinking! Roll only 1-3 for 2 turns." },
-    { name: "Teleport Trap", description: "A portal appears! You land on another trap." },
-    { name: "Sticky Web", description: "Caught in a spider web! Skip a turn unless you roll a 6." },
-    { name: "Hidden Mine", description: "BOOM! Lose a power-up card if you have one." },
-    
-    // New deadly traps
-    { 
-        name: "Doom Spiral", 
-        description: "You are stuck! You must roll a 6 to escape. If you fail within 3 turns, move back 10 spaces." 
-    },
-    { 
-        name: "The Void Step", 
-        description: "You disappear into nothingness! Teleport to the farthest penalty tile. If none exist, go back to Start! Lose your next turn." 
-    },
-    { 
-        name: "Chains of Suffering", 
-        description: "Every move you make also moves you back 2 spaces for the next 5 turns. If you land on another trap, skip a turn!" 
-    },
-    { 
-        name: "Death Row", 
-        description: "You cannot move forward until you roll a 5 or 6. If you fail, move back 5 spaces per failed roll. If you fail 4 times, go back to the last power-up tile you touched." 
-    },
-    { 
-        name: "Curse of the Dead King", 
-        description: "Your last 3 moves are erased! Go back to where you were 3 turns ago. For the next 3 turns, your max roll is 3. If you land here again, skip 3 turns." 
-    }
-];
-
+            trap: [
+                { name: "Pitfall Trap", description: "Oops! You fell in a hole! Move back 5 spaces." },
+                { name: "Spike Trap", description: "Ouch! Stepped on spikes! Skip your next turn." },
+                { name: "Quicksand", description: "You're sinking! Roll only 1-3 for 2 turns." },
+                { name: "Teleport Trap", description: "A portal appears! You land on another trap." },
+                { name: "Sticky Web", description: "Caught in a spider web! Skip a turn unless you roll a 6." },
+                { name: "Hidden Mine", description: "BOOM! Lose a power-up card if you have one." },
+                { name: "Doom Spiral", description: "You are stuck! You must roll a 6 to escape. If you fail within 3 turns, move back 10 spaces." },
+                { name: "The Void Step", description: "You disappear into nothingness! Teleport to the farthest penalty tile. If none exist, go back to Start! Lose your next turn." },
+                { name: "Chains of Suffering", description: "Every move you make also moves you back 2 spaces for the next 5 turns. If you land on another trap, skip a turn!" },
+                { name: "Death Row", description: "You cannot move forward until you roll a 5 or 6. If you fail, move back 5 spaces per failed roll. If you fail 4 times, go back to the last power-up tile you touched." },
+                { name: "Curse of the Dead King", description: "Your last 3 moves are erased! Go back to where you were 3 turns ago. For the next 3 turns, your max roll is 3. If you land here again, skip 3 turns." }
+            ],
             penalty: [
                 { name: "Slippery Floor", description: "Whoa! You slipped and moved back 3 spaces." },
                 { name: "Dizzy Spell", description: "You're so dizzy! Your next move is backward." },
